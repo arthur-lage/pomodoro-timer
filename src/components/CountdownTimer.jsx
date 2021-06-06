@@ -12,18 +12,19 @@ import { useCountdown } from '../context/Countdown'
 
 function CountdownTimer() {
 
-  const {time, setTime, isActive, setIsActive} = useCountdown()
+  const { startingValue, time, isActive, stopCountdown, startCountdown, minutes, seconds } = useCountdown()
+  const [minuteLeft, minuteRight] = String(minutes).padStart(2, 0).split('')
+  const [secondLeft, secondRight] = String(seconds).padStart(2, 0).split('')
 
-  const buttonHandler = () => {
-    setIsActive(!isActive);
-  };
+  document.title = `Pomodoro Timer - ${minuteLeft}${minuteRight}:${secondLeft}${secondRight}`
 
   return (
     <div className="countdown-timer">
       <div className="countdown">
         <CircularProgressbarWithChildren
           strokeWidth={3}
-          value={23}
+          maxValue={startingValue}
+          value={time / 1}
           styles={buildStyles({
             strokeLinecap: "round",
             pathColor: "rgb(255, 86, 74)",
@@ -31,21 +32,21 @@ function CountdownTimer() {
           })}
         >
           <div className="time">
-            <span className="min-left">1</span>
-            <span className="min-right">4</span>
+            <span className="min-left">{minuteLeft}</span>
+            <span className="min-right">{minuteRight}</span>
             <span>:</span>
-            <span className="sec-left">5</span>
-            <span className="sec-right">6</span>
+            <span className="sec-left">{secondLeft}</span>
+            <span className="sec-right">{secondRight}</span>
           </div>
         </CircularProgressbarWithChildren>
       </div>
 
       {isActive ? (
-        <button className="button stop" onClick={buttonHandler}>
-          STOP
+        <button className="button stop" onClick={stopCountdown}>
+          PAUSE
         </button>
       ) : (
-        <button className="button start" onClick={buttonHandler}>
+        <button className="button start" onClick={startCountdown}>
           START
         </button>
       )}
