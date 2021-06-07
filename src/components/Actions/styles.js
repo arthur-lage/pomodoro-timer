@@ -42,3 +42,24 @@ export const ActionsContainer = styled.div`
     }
   }
 `;
+
+export const ChangingAlert = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  
+  p{
+    transition: .2s ease;
+    color:white;
+  }
+
+  p.hidden{
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  p.active{
+    opacity: 1;
+    pointer-events: auto;
+  }
+`

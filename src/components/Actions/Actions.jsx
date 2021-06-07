@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { useCountdown } from "../../context/Countdown";
 
-import { ActionsContainer } from './styles.js'
+import { ActionsContainer, ChangingAlert } from "./styles.js";
 
 function Actions() {
   const {
@@ -44,56 +44,69 @@ function Actions() {
   }, [currentMode, setCurrentCycle, setCurrentMode]);
 
   return (
-    <ActionsContainer>
-      <button
-        className="action active"
-        id="focus-mode"
-        onClick={() => {
-          setIsActive(false);
-          setTimeout(() => {
-            setTime(25 * 60);
-            setStartingValue(25 * 60);
-          }, 100);
-          clearActiveClass();
-          document.getElementById("focus-mode").classList.add("active");
-          setCurrentMode("focus-mode");
-        }}
-      >
-        FOCUS MODE
-      </button>
-      <button
-        className="action"
-        id="short-break"
-        onClick={() => {
-          setIsActive(false);
-          setTimeout(() => {
-            setTime(5 * 60);
-            setStartingValue(5 * 60);
-          }, 100);
-          clearActiveClass();
-          document.getElementById("short-break").classList.add("active");
-          setCurrentMode("short-break");
-        }}
-      >
-        SHORT BREAK
-      </button>
-      <button
-        className="action"
-        id="long-break"
-        onClick={() => {
-          setIsActive(false);
-          setTimeout(() => {
-            setTime(15 * 60);
-            setStartingValue(15 * 60);
-          }, 100);
-          clearActiveClass();
-          document.getElementById("long-break").classList.add("active");
-          setCurrentMode("long-break");
-        }}
-      >
-        LONG BREAK
-      </button>
-    </ActionsContainer>
+    <div>
+      <ActionsContainer>
+        <button
+          className="action active"
+          id="focus-mode"
+          onClick={() => {
+            setIsActive(false);
+            document.getElementById("changing-alert").classList.replace("hidden", "active")
+            setTimeout(() => {
+              setTime(25 * 60);
+              setStartingValue(25 * 60);
+              document.getElementById("changing-alert").classList.replace("active", "hidden")
+            }, 800);
+            clearActiveClass();
+            document.getElementById("focus-mode").classList.add("active");
+            setCurrentMode("focus-mode");
+          }}
+        >
+          FOCUS MODE
+        </button>
+        <button
+          className="action"
+          id="short-break"
+          onClick={() => {
+            setIsActive(false);
+            document.getElementById("changing-alert").classList.replace("hidden", "active")
+            setTimeout(() => {
+              setTime(5 * 60);
+              setStartingValue(5 * 60);
+              document.getElementById("changing-alert").classList.replace("active", "hidden")
+            }, 800);
+            clearActiveClass();
+            document.getElementById("short-break").classList.add("active");
+            setCurrentMode("short-break");
+          }}
+        >
+          SHORT BREAK
+        </button>
+        <button
+          className="action"
+          id="long-break"
+          onClick={() => {
+            setIsActive(false);
+            document.getElementById("changing-alert").classList.replace("hidden", "active")
+            setTimeout(() => {
+              setTime(15 * 60);
+              setStartingValue(15 * 60);
+              document.getElementById("changing-alert").classList.replace("active", "hidden")
+            }, 800);
+            clearActiveClass();
+            document.getElementById("long-break").classList.add("active");
+            setCurrentMode("long-break");
+          }}
+        >
+          LONG BREAK
+        </button>
+
+        <ChangingAlert>
+        <p id="changing-alert" className="hidden">Changing...</p>
+      </ChangingAlert>
+      </ActionsContainer>
+
+    </div>
   );
 }
 

@@ -6,9 +6,6 @@ import {FaMoon} from 'react-icons/fa'
 import { HeaderContainer, HeaderTitle, HeaderSwitch } from './styles.js'
 
 function Header({ themeToggler, theme }) {
-
-    console.log(theme)
-
     return (
         <HeaderContainer>
             <HeaderTitle>
