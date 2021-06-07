@@ -1,6 +1,6 @@
-import "./CountdownTimer.css";
+import { CountdownTimerContainer } from './styles.js'
 
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   CircularProgressbarWithChildren,
@@ -8,9 +8,12 @@ import {
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import { useCountdown } from '../context/Countdown'
+import { useCountdown } from '../../context/Countdown'
+import { ThemeContext } from 'styled-components';
 
 function CountdownTimer() {
+
+  const { colors } = useContext(ThemeContext)
 
   const { startingValue, time, isActive, stopCountdown, startCountdown, minutes, seconds } = useCountdown()
   const [minuteLeft, minuteRight] = String(minutes).padStart(2, 0).split('')
@@ -19,7 +22,7 @@ function CountdownTimer() {
   document.title = `Pomodoro Timer - ${minuteLeft}${minuteRight}:${secondLeft}${secondRight}`
 
   return (
-    <div className="countdown-timer">
+    <CountdownTimerContainer>
       <div className="countdown">
         <CircularProgressbarWithChildren
           strokeWidth={3}
@@ -27,7 +30,7 @@ function CountdownTimer() {
           value={time / 1}
           styles={buildStyles({
             strokeLinecap: "round",
-            pathColor: "rgb(255, 86, 74)",
+            pathColor: colors.progressbar,
             trailColor: "#d6d6d6",
           })}
         >
@@ -50,7 +53,7 @@ function CountdownTimer() {
           START
         </button>
       )}
-    </div>
+    </CountdownTimerContainer>
   );
 }
 

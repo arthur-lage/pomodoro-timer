@@ -1,5 +1,5 @@
 import React from "react";
-import { useCountdown } from "../context/Countdown";
+import { useCountdown } from "../../context/Countdown";
 import "./AlarmModal.css";
 
 function AlarmModal() {

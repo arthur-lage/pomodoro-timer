@@ -1,10 +1,18 @@
-import "./Actions.css";
 import React, { useEffect } from "react";
 
-import { useCountdown } from "../context/Countdown";
+import { useCountdown } from "../../context/Countdown";
+
+import { ActionsContainer } from './styles.js'
 
 function Actions() {
-  const { setTime, setIsActive, setStartingValue, currentMode } = useCountdown();
+  const {
+    setTime,
+    setIsActive,
+    setStartingValue,
+    currentMode,
+    setCurrentMode,
+    setCurrentCycle,
+  } = useCountdown();
 
   const clearActiveClass = () => {
     document.getElementById("focus-mode").classList.remove("active");
@@ -12,21 +20,31 @@ function Actions() {
     document.getElementById("long-break").classList.remove("active");
   };
 
+  const setActiveClass = (id) => {
+    document.getElementById(id).classList.add("active");
+  };
+
   useEffect(() => {
-    if(currentMode === "focus-mode"){
-      clearActiveClass()
-      document.getElementById("focus-mode").classList.add("active");
-    } else if (currentMode === "short-break"){
-      clearActiveClass()
-      document.getElementById("short-break").classList.add("active");
-    } else if (currentMode === "long-break"){
-      clearActiveClass()
-      document.getElementById("long-break").classList.add("active");
+    if (currentMode === "focus-mode") {
+      clearActiveClass();
+      setActiveClass("focus-mode");
+      setCurrentMode("focus-mode");
+      setCurrentCycle(0);
+    } else if (currentMode === "short-break") {
+      clearActiveClass();
+      setActiveClass("short-break");
+      setCurrentMode("short-break");
+      setCurrentCycle(0);
+    } else if (currentMode === "long-break") {
+      clearActiveClass();
+      setActiveClass("long-break");
+      setCurrentMode("long-break");
+      setCurrentCycle(4);
     }
-  }, [currentMode])
+  }, [currentMode, setCurrentCycle, setCurrentMode]);
 
   return (
-    <div className="actions">
+    <ActionsContainer>
       <button
         className="action active"
         id="focus-mode"
@@ -38,6 +56,7 @@ function Actions() {
           }, 100);
           clearActiveClass();
           document.getElementById("focus-mode").classList.add("active");
+          setCurrentMode("focus-mode");
         }}
       >
         FOCUS MODE
@@ -53,6 +72,7 @@ function Actions() {
           }, 100);
           clearActiveClass();
           document.getElementById("short-break").classList.add("active");
+          setCurrentMode("short-break");
         }}
       >
         SHORT BREAK
@@ -68,11 +88,12 @@ function Actions() {
           }, 100);
           clearActiveClass();
           document.getElementById("long-break").classList.add("active");
+          setCurrentMode("long-break");
         }}
       >
         LONG BREAK
       </button>
-    </div>
+    </ActionsContainer>
   );
 }
 
