@@ -66,7 +66,7 @@ export default function CountdownProvider({ children }) {
     if (isActive && time > 0) {
       countdownTimeout = setTimeout(() => {
         setTime(time - 1);
-      }, 10);
+      }, 1000);
     } else if (isActive && time === 0) {
       if (Notification.permission === "granted") {
         showNotification();

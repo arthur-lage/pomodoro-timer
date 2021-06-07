@@ -1,4 +1,4 @@
-export default {
+const theme =  {
     title: "light",
 
     colors: {
@@ -11,3 +11,5 @@ export default {
         headerBorder: "rgba(0,0,0,0.2)"
     }
 }
+
+export default theme

@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">Pomodoro Timer</h3>
 
-## Available Scripts
+<div align="center">
 
-In the project directory, you can run:
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/arthur-lage/pomodoro-timer.svg)](https://github.com/arthur-lage/pomodoro-timer/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-### `yarn start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p align="center">Time counting app using the Pomodoro technique.
+ <br> 
+| 25 Min of Focus | + | 5 Min of Rest | x 4
+ <br> 
+| 15 Min of Rest |
+    <br> 
+</p>
 
-### `yarn test`
+<hr>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📝 Table of Contents
 
-### `yarn build`
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [Access](#acess)
+- [Built Using](#built_using)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<hr>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🧐 About <a name = "about"></a>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. The technique uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks.
+The app was created with the purpose of helping people to manage their time.
 
-### `yarn eject`
+<hr>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+These instructions will get you a copy of the project up and running on your local machine for development purposes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Prerequisites
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+NodeJS
+Yarn or NPM
+Web Browser
+```
 
-## Learn More
+### Installing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+First, we need to download the project
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+git clone https://github.com/arthur-lage/pomodoro-timer.git
 
-### Code Splitting
+cd project
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+And then we need to install the dependencies, so we can 
+enjoy the application.
 
-### Analyzing the Bundle Size
+```
+yarn || npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+yarn start OR npm start
+```
 
-### Making a Progressive Web App
+<hr>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🎈 Usage <a name="usage"></a>
 
-### Advanced Configuration
+Choose one of the three avaliable modes
+and click the start button on the center to start a new cycle. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Then, start studying, working or programming with total focus.
 
-### Deployment
+When the time is over, a sound will be played, and the system will change the mode automatically.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<hr>
 
-### `yarn build` fails to minify
+## 🚀 Access <a name = "access"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I've hosted the application in Vercel.com
+
+You can access it using the following link.
+
+| [Pomodoro Timer]() |
+
+<hr>
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [React](https://react.org/) - Web Framework
+- [Styled Components](https://styled-components.com/) - Project Styling
+- [React Circular Progressbar](https://www.npmjs.com/package/react-circular-progressbar) - Countdown Progressbar
+- [React Icons](https://react-icons.github.io/react-icons/) - Project Icons
+
+<hr>
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@arthur-lage](https://github.com/arthur-lage) - Idea & Code.
+
+<hr>
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+
+### References
+
+- [Pomofocus](https://pomofocus.io) - The website that got me inspired to start this project. 
+
+<hr>
