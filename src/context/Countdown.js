@@ -43,23 +43,31 @@ export default function CountdownProvider({ children }) {
       body: `A ${nowModeRef.current} cycle has finished. Come back to start a new ${nextModeRef.current} cycle!`,
     });
 
-    if(notification) return
+    if (notification) return;
+  }
+
+  function onTimeIsOverHandler(newMode, newTime, newCurrentCycle) {
+    setCurrentMode(newMode);
+    setTime(newTime * 60);
+    setStartingValue(newTime * 60);
+    setCurrentCycle(newCurrentCycle);
   }
 
   useEffect(() => {
-    if (currentCycle < 3 && currentMode === "focus-mode") {
-      nowModeRef.current = "FOCUS MODE";
+    if (currentMode === "focus-mode") nowModeRef.current = "FOCUS MODE";
+    if (currentMode === "short-break") nowModeRef.current = "SHORT BREAK";
+    if (currentMode === "long-break") nowModeRef.current = "LONG BREAK";
+
+    if (currentMode === "focus-mode" && currentCycle < 7)
       nextModeRef.current = "SHORT BREAK";
-    } else if (currentCycle < 3 && currentMode === "short-break") {
-      nowModeRef.current = "SHORT BREAK";
+    if (currentMode === "short-break" && currentCycle < 7)
       nextModeRef.current = "FOCUS MODE";
-    } else if (currentCycle === 3 && currentMode === "short-break") {
-      nowModeRef.current = "SHORT BREAK";
+    if (currentMode === "focus-mode" && currentCycle === 7)
+      nextModeRef.current = "LONG BREAK";
+    if (currentMode === "short-break" && currentCycle === 7)
+      nextModeRef.current = "LONG BREAK";
+    if (currentMode === "long-break" && currentCycle === 8)
       nextModeRef.current = "FOCUS MODE";
-    } else if (currentCycle === 4 && currentMode === "long-break") {
-      nowModeRef.current = "LONG BREAK";
-      nextModeRef.current = "FOCUS MODE";
-    }
   }, [currentCycle, currentMode]);
 
   useEffect(() => {
@@ -68,39 +76,33 @@ export default function CountdownProvider({ children }) {
         setTime(time - 1);
       }, 1);
     } else if (isActive && time === 0) {
+      const modalOverlay = document.querySelector(".modal-overlay");
       setIsActive(false);
       alarmRef.current.play();
-      document.querySelector(".modal-overlay").classList.replace("hidden", "active");
+      modalOverlay.classList.replace("hidden", "active");
 
-      if (currentCycle < 4 && currentMode === "focus-mode") {
-        setCurrentMode("short-break");
-        setTime(5 * 60);
-        setStartingValue(5 * 60);
-      } else if (currentCycle < 3 && currentMode === "short-break") {
-        setCurrentCycle(currentCycle + 1);
-        setCurrentMode("focus-mode");
-        setTime(25 * 60);
-        setStartingValue(25 * 60);
-      } else if (currentCycle === 3 && currentMode === "short-break") {
-        setCurrentCycle(currentCycle + 1);
-        setCurrentMode("long-break");
-        setTime(15 * 60);
-        setStartingValue(15 * 60);
-      } else if (currentCycle === 4 && currentMode === "long-break") {
-        setCurrentCycle(0);
-        setCurrentMode("focus-mode");
-        setTime(25 * 60);
-        setStartingValue(25 * 60);
-      }
+      if (currentMode === "focus-mode" && currentCycle < 7)
+        onTimeIsOverHandler("short-break", 5, currentCycle + 1);
+
+      if (currentMode === "short-break" && currentCycle < 7)
+        onTimeIsOverHandler("focus-mode", 25, currentCycle + 1);
+
+      if (
+        (currentMode === "focus-mode" && currentCycle === 7) ||
+        (currentMode === "short-break" && currentCycle === 7)
+      )
+        onTimeIsOverHandler("long-break", 15, currentCycle + 1);
+
+      if (currentCycle === 8) onTimeIsOverHandler("focus-mode", 25, 0);
+
       setTimeout(() => {
-        document.querySelector(".modal-overlay").classList.replace("active", "hidden");
-        alarmRef.current.pause()
+        modalOverlay.classList.replace("active", "hidden");
+        alarmRef.current.pause();
       }, 7500);
 
       if (Notification.permission === "granted") {
         showNotification();
       }
-      
     }
   }, [isActive, time, minutes, seconds, currentCycle, currentMode]);
 
@@ -123,7 +125,7 @@ export default function CountdownProvider({ children }) {
         currentCycle,
         currentMode,
         setCurrentMode,
-        setCurrentCycle
+        setCurrentCycle,
       }}
     >
       {children}
@@ -150,7 +152,7 @@ export function useCountdown() {
     currentCycle,
     currentMode,
     setCurrentMode,
-    setCurrentCycle
+    setCurrentCycle,
   } = context;
   return {
     time,
@@ -169,6 +171,6 @@ export function useCountdown() {
     currentCycle,
     currentMode,
     setCurrentMode,
-    setCurrentCycle
+    setCurrentCycle,
   };
 }

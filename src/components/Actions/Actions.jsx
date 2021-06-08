@@ -28,18 +28,12 @@ function Actions() {
     if (currentMode === "focus-mode") {
       clearActiveClass();
       setActiveClass("focus-mode");
-      setCurrentMode("focus-mode");
-      setCurrentCycle(0);
     } else if (currentMode === "short-break") {
       clearActiveClass();
       setActiveClass("short-break");
-      setCurrentMode("short-break");
-      setCurrentCycle(0);
     } else if (currentMode === "long-break") {
       clearActiveClass();
       setActiveClass("long-break");
-      setCurrentMode("long-break");
-      setCurrentCycle(4);
     }
   }, [currentMode, setCurrentCycle, setCurrentMode]);
 
