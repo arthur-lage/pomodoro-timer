@@ -66,14 +66,11 @@ export default function CountdownProvider({ children }) {
     if (isActive && time > 0) {
       countdownTimeout = setTimeout(() => {
         setTime(time - 1);
-      }, 1000);
+      }, 1);
     } else if (isActive && time === 0) {
-      if (Notification.permission === "granted") {
-        showNotification();
-      }
       setIsActive(false);
       alarmRef.current.play();
-      document.querySelector(".modal").classList.replace("hidden", "active");
+      document.querySelector(".modal-overlay").classList.replace("hidden", "active");
 
       if (currentCycle < 4 && currentMode === "focus-mode") {
         setCurrentMode("short-break");
@@ -96,9 +93,14 @@ export default function CountdownProvider({ children }) {
         setStartingValue(25 * 60);
       }
       setTimeout(() => {
-        document.querySelector(".modal").classList.replace("active", "hidden");
+        document.querySelector(".modal-overlay").classList.replace("active", "hidden");
         alarmRef.current.pause()
       }, 7500);
+
+      if (Notification.permission === "granted") {
+        showNotification();
+      }
+      
     }
   }, [isActive, time, minutes, seconds, currentCycle, currentMode]);
 

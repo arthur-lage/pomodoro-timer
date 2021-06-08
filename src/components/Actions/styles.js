@@ -8,6 +8,7 @@ export const ActionsContainer = styled.div`
   width: 35%;
   margin: 0 auto;
   margin-top: 3rem;
+  justify-content: center;
 
   button {
     font-family: "Poppins";
@@ -26,7 +27,7 @@ export const ActionsContainer = styled.div`
 
     &.active {
       background: ${(props) => props.theme.colors.actions};
-      color: white
+      color: white;
     }
 
     &:nth-child(1) {
@@ -40,26 +41,81 @@ export const ActionsContainer = styled.div`
     &:nth-child(3) {
       border-radius: 0 20px 20px 0;
     }
+
+    @media only screen and (min-width: 1440px) {
+      font-size: 1.2rem;
+    }
+
+    @media only screen and (min-width: 1366px) {
+      font-size: 1rem;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media only screen and (max-width: 1920px) {
+    width: 70%;
   }
 `;
 
 export const ChangingAlert = styled.div`
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  
-  p{
-    transition: .2s ease;
-    color:white;
+  right: 50%;
+  transform: translateX(50%);
+
+  p {
+    transition: 0.2s ease;
+    color: ${(props) => props.theme.colors.text};
+    font-size: 1.35rem;
   }
 
-  p.hidden{
+  p.hidden {
     opacity: 0;
     pointer-events: none;
   }
 
-  p.active{
+  p.active {
     opacity: 1;
     pointer-events: auto;
   }
-`
+
+  @media only screen and (min-width: 1440px) {
+    bottom: 90px;
+    
+    p{
+      font-size: 1.75rem;
+    }
+  }
+
+  @media only screen and (min-width: 1025px) and (max-width: 1439px) {
+    bottom: 20px;
+    p{
+      font-size: 1.35rem;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    bottom: 55px;
+    p{
+      font-size: 1.5rem;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    bottom: 20px;
+  }
+
+  @media only screen and (max-width: 425px) {
+    bottom: 35px;
+  }
+
+  @media only screen and (max-width: 375px) {
+    bottom: 30px;
+  }
+
+  @media only screen and (max-width: 320px) {
+    bottom: 20px;
+  }
+`;

@@ -57,4 +57,99 @@ export const CountdownTimerContainer = styled.div`
   .CircularProgressbar-path {
     stroke: ${(props) => props.theme.colors.progressbar};
   }
+
+  @media only screen and (min-width: 1440px) {
+    .countdown {
+      width: 350px;
+      height: 350px;
+    }
+
+    .countdown .time {
+      font-size: 5rem;
+    }
+
+    .button {
+      width: 325px;
+      height: 60px;
+      font-size: 1.75rem;
+      margin-top: 2.5rem;
+    }
+  }
+
+  @media only screen and (min-width: 1025px) and (max-width: 1439px) {
+    .countdown {
+      width: 250px;
+      height: 250px;
+    }
+
+    .countdown .time {
+      font-size: 3.5rem;
+    }
+
+    .button {
+      width: 275px;
+      height: 50px;
+      font-size: 1.5rem;
+      margin-top: 2.5rem;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .countdown {
+      width: 300px;
+      height: 300px;
+    }
+
+    .countdown .time {
+      font-size: 3.5rem;
+    }
+
+    .button {
+      width: 275px;
+      height: 50px;
+      font-size: 1.5rem;
+      margin-top: 3rem;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .countdown {
+      width: 200px;
+      height: 200px;
+    }
+
+    .countdown .time {
+      font-size: 3rem;
+    }
+  }
+
+  @media only screen and (max-width: 425px) {
+    .countdown {
+      width: 180px;
+      height: 180px;
+    }
+
+    .countdown .time {
+      font-size: 3rem;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .button {
+      margin-top: 10%;
+    }
+  }
+
+  @media only screen and (max-width: 320px) {
+    margin-top: 10%;
+
+    .countdown {
+      width: 200px;
+      height: 200px;
+    }
+
+    .button {
+      margin-top: 15%;
+    }
+  }
 `;

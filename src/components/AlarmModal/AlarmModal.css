@@ -1,27 +1,36 @@
-.modal.hidden {
+.modal-overlay{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9;
+}
+
+.modal-overlay.hidden {
   opacity: 0;
-  right: -100px;
   pointer-events: none;
 }
 
-.modal.active {
+.modal-overlay.active {
   opacity: 1;
-  right: 50px;
   pointer-events: auto;
 }
 
 .modal {
-  position: absolute;
   z-index: 10;
-  right: 50px;
   font-family: "Poppins";
-  top: 145px;
   padding: 2rem 2.5rem;
   text-align: center;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   background: #473a86;
-  transition: 0.5s ease;
+  color: white;
 }
 
 .modal h2 {
@@ -47,4 +56,11 @@
 
 .modal button:hover {
   background: rgb(214, 55, 44);
+}
+
+@media only screen and (min-width: 1440px){
+  .modal {
+    padding: 2.5rem 5rem;
+    font-size: 1.5rem;
+  }
 }

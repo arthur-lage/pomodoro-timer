@@ -51,11 +51,15 @@ function Actions() {
           id="focus-mode"
           onClick={() => {
             setIsActive(false);
-            document.getElementById("changing-alert").classList.replace("hidden", "active")
+            document
+              .getElementById("changing-alert")
+              .classList.replace("hidden", "active");
             setTimeout(() => {
               setTime(25 * 60);
               setStartingValue(25 * 60);
-              document.getElementById("changing-alert").classList.replace("active", "hidden")
+              document
+                .getElementById("changing-alert")
+                .classList.replace("active", "hidden");
             }, 800);
             clearActiveClass();
             document.getElementById("focus-mode").classList.add("active");
@@ -69,11 +73,15 @@ function Actions() {
           id="short-break"
           onClick={() => {
             setIsActive(false);
-            document.getElementById("changing-alert").classList.replace("hidden", "active")
+            document
+              .getElementById("changing-alert")
+              .classList.replace("hidden", "active");
             setTimeout(() => {
               setTime(5 * 60);
               setStartingValue(5 * 60);
-              document.getElementById("changing-alert").classList.replace("active", "hidden")
+              document
+                .getElementById("changing-alert")
+                .classList.replace("active", "hidden");
             }, 800);
             clearActiveClass();
             document.getElementById("short-break").classList.add("active");
@@ -87,11 +95,15 @@ function Actions() {
           id="long-break"
           onClick={() => {
             setIsActive(false);
-            document.getElementById("changing-alert").classList.replace("hidden", "active")
+            document
+              .getElementById("changing-alert")
+              .classList.replace("hidden", "active");
             setTimeout(() => {
               setTime(15 * 60);
               setStartingValue(15 * 60);
-              document.getElementById("changing-alert").classList.replace("active", "hidden")
+              document
+                .getElementById("changing-alert")
+                .classList.replace("active", "hidden");
             }, 800);
             clearActiveClass();
             document.getElementById("long-break").classList.add("active");
@@ -102,10 +114,11 @@ function Actions() {
         </button>
 
         <ChangingAlert>
-        <p id="changing-alert" className="hidden">Changing...</p>
-      </ChangingAlert>
+          <p id="changing-alert" className="hidden">
+            Changing...
+          </p>
+        </ChangingAlert>
       </ActionsContainer>
-
     </div>
   );
 }
