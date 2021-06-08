@@ -74,7 +74,7 @@ export default function CountdownProvider({ children }) {
     if (isActive && time > 0) {
       countdownTimeout = setTimeout(() => {
         setTime(time - 1);
-      }, 1);
+      }, 1000);
     } else if (isActive && time === 0) {
       const modalOverlay = document.querySelector(".modal-overlay");
       setIsActive(false);
